@@ -26,10 +26,11 @@ type Tray struct {
 }
 
 type Ams struct {
-	Humidity    int     `json:"humidity"`    // 0-5: 0 is dry, 5 is wet
-	ID          int     `json:"id"`          // ID of the Ams object
-	Temperature float64 `json:"temperature"` // Temperature inside the Ams (°C)
-	Trays       []Tray  `json:"trays"`       // List of trays in the Ams
+	Humidity    int     `json:"humidity"`     // 0-5: 0 is dry, 5 is wet
+	HumidityPct int     `json:"humidity_pct"` // Actual humidity percentage 0-100
+	ID          int     `json:"id"`           // ID of the Ams object
+	Temperature float64 `json:"temperature"`  // Temperature inside the Ams (°C)
+	Trays       []Tray  `json:"trays"`        // List of trays in the Ams
 }
 
 type LightReport struct {

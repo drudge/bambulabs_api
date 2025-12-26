@@ -252,6 +252,7 @@ func (p *Printer) Data() (Data, error) {
 
 		final.Ams = append(final.Ams, Ams{
 			Humidity:    unsafeParseInt(ams.Humidity),
+			HumidityPct: unsafeParseInt(ams.HumidityRaw),
 			ID:          unsafeParseInt(ams.ID),
 			Temperature: unsafeParseFloat(ams.Temp),
 			Trays:       trays,

@@ -6,9 +6,10 @@ type Message struct {
 	Print struct {
 		Ams struct {
 			Ams []struct {
-				Humidity string `json:"humidity"`
-				ID       string `json:"id"`
-				Temp     string `json:"temp"`
+				Humidity    string `json:"humidity"`
+				HumidityRaw string `json:"humidity_raw"`
+				ID          string `json:"id"`
+				Temp        string `json:"temp"`
 				Tray     []struct {
 					ID            string   `json:"id"`
 					BedTemp       string   `json:"bed_temp,omitempty"`
