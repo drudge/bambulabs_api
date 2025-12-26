@@ -137,7 +137,7 @@ func (p *Printer) Data() (Data, error) {
 		AmsExists:               data.Print.Ams.AmsExistBits == "1",
 		BedTargetTemperature:    data.Print.BedTargetTemper,
 		BedTemperature:          data.Print.BedTemper,
-		BedType:                 mapPlateType(data.Print.Plate.Base),
+		BedType:                 mapPlateType(data.Print.Device.Plate.Base),
 		AuxiliaryFanSpeed:       unsafeParseInt(data.Print.BigFan1Speed),
 		ChamberFanSpeed:         unsafeParseInt(data.Print.BigFan2Speed),
 		PartFanSpeed:            unsafeParseInt(data.Print.CoolingFanSpeed),

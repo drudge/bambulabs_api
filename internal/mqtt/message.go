@@ -92,13 +92,6 @@ type Message struct {
 			Rfid    bool `json:"rfid"`
 			Version int  `json:"version"`
 		} `json:"online"`
-		Plate struct {
-			Base     int    `json:"base"`      // Bed plate type: 1=Cool Plate, 2=Engineering Plate, 3=High Temp Plate, 4=Textured PEI Plate
-			Cali2dID string `json:"cali2d_id"` // Calibration ID
-			CurID    string `json:"cur_id"`    // Current plate ID
-			Mat      int    `json:"mat"`       // Material type
-			TarID    string `json:"tar_id"`    // Target plate ID
-		} `json:"plate"`
 		PrintError       int    `json:"print_error"`
 		PrintGcodeAction int    `json:"print_gcode_action"`
 		PrintRealAction  int    `json:"print_real_action"`
@@ -188,6 +181,13 @@ type Message struct {
 			Nozzle struct {
 				Temp int `json:"temp"`
 			} `json:"nozzle"`
+			Plate struct {
+				Base     int    `json:"base"`      // Bed plate type: 1=Cool Plate, 2=Engineering Plate, 3=High Temp Plate, 4=Textured PEI Plate
+				Cali2dID string `json:"cali2d_id"` // Calibration ID
+				CurID    string `json:"cur_id"`    // Current plate ID
+				Mat      int    `json:"mat"`       // Material type
+				TarID    string `json:"tar_id"`    // Target plate ID
+			} `json:"plate"`
 		} `json:"device"`
 	} `json:"print"`
 }
