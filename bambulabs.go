@@ -137,7 +137,7 @@ func (p *Printer) Data() (Data, error) {
 		AmsExists:               data.Print.Ams.AmsExistBits == "1",
 		BedTargetTemperature:    data.Print.BedTargetTemper,
 		BedTemperature:          data.Print.BedTemper,
-		BedType:                 data.Print.BedType,
+		BedType:                 mapPlateType(data.Print.Plate.Base),
 		AuxiliaryFanSpeed:       unsafeParseInt(data.Print.BigFan1Speed),
 		ChamberFanSpeed:         unsafeParseInt(data.Print.BigFan2Speed),
 		PartFanSpeed:            unsafeParseInt(data.Print.CoolingFanSpeed),
@@ -604,6 +604,24 @@ func (p *Printer) StopCameraStream() error {
 	}
 
 	return nil
+}
+
+// mapPlateType maps the plate.base integer to a human-readable bed type string
+func mapPlateType(plateBase int) string {
+	switch plateBase {
+	case 1:
+		return "cool_plate"
+	case 2:
+		return "engineering_plate"
+	case 3:
+		return "high_temp_plate"
+	case 4:
+		return "textured_plate"
+	case 5:
+		return "smooth_pei_plate"
+	default:
+		return ""
+	}
 }
 
 // endregion
