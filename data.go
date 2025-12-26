@@ -12,6 +12,7 @@ import (
 type Tray struct {
 	ID                int          `json:"id"`                 // ID represents the id of an individual tray
 	BedTemperature    float64      `json:"bed_temperature"`    // Bed temperature for the specific filament
+	BedTempType       string       `json:"bed_temp_type"`      // Bed plate type (e.g., "Cool Plate", "Engineering Plate", "Textured PEI Plate")
 	Colors            []color.RGBA `json:"colors"`             // Individual colors in the filament
 	DryingTemperature float64      `json:"drying_temperature"` // Temperature for drying the filament (°C)
 	DryingTime        int          `json:"drying_time"`        // Drying time (hours)
