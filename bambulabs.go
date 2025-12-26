@@ -152,6 +152,8 @@ func (p *Printer) Data() (Data, error) {
 		NozzleDiameter:          data.Print.NozzleDiameter,
 		NozzleTargetTemperature: data.Print.NozzleTargetTemper,
 		NozzleTemperature:       data.Print.NozzleTemper,
+		PrintSpeedLevel:         data.Print.SpdLvl,
+		PrintSpeedMagnitude:     data.Print.SpdMag,
 		Sdcard:                  data.Print.Sdcard,
 		WifiSignal:              data.Print.WifiSignal,
 	}

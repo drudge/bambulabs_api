@@ -56,6 +56,8 @@ type Data struct {
 	NozzleDiameter          string           `json:"nozzle_diameter"`            // Diameter of the nozzle (mm)
 	NozzleTargetTemperature float64          `json:"nozzle_target_temperature"`  // Target nozzle temperature (°C)
 	NozzleTemperature       float64          `json:"nozzle_temperature"`         // Current nozzle temperature (°C)
+	PrintSpeedLevel         int              `json:"print_speed_level"`          // Print speed level (1=silent, 2=normal, 3=sport, 4=ludicrous)
+	PrintSpeedMagnitude     int              `json:"print_speed_magnitude"`      // Print speed magnitude percentage
 	Sdcard                  bool             `json:"sdcard"`                     // Whether an SD card is inserted
 	LightReport             []LightReport    `json:"lights_report"`              // Light report
 	VtTray                  Tray             `json:"vt_tray"`                    // Built-in tray for use without Ams
