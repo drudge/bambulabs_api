@@ -608,20 +608,24 @@ func (p *Printer) StopCameraStream() error {
 
 // mapPlateType maps the plate.base integer to a human-readable bed type string
 func mapPlateType(plateBase int) string {
+	fmt.Printf("[mapPlateType] Input plate.base value: %d\n", plateBase)
+	var result string
 	switch plateBase {
 	case 1:
-		return "cool_plate"
+		result = "cool_plate"
 	case 2:
-		return "engineering_plate"
+		result = "engineering_plate"
 	case 3:
-		return "high_temp_plate"
+		result = "high_temp_plate"
 	case 4:
-		return "textured_plate"
+		result = "textured_plate"
 	case 5:
-		return "smooth_pei_plate"
+		result = "smooth_pei_plate"
 	default:
-		return ""
+		result = ""
 	}
+	fmt.Printf("[mapPlateType] Returning: '%s'\n", result)
+	return result
 }
 
 // endregion
