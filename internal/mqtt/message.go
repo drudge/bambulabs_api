@@ -47,6 +47,7 @@ type Message struct {
 		AuxPartFan              bool        `json:"aux_part_fan"`
 		BedTargetTemper         float64     `json:"bed_target_temper"`
 		BedTemper               float64     `json:"bed_temper"`
+		BedType                 string      `json:"bed_type"`
 		BigFan1Speed            string      `json:"big_fan1_speed"`
 		BigFan2Speed            string      `json:"big_fan2_speed"`
 		ChamberTemper           float64     `json:"chamber_temper"`

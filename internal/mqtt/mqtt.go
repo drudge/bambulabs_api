@@ -189,14 +189,26 @@ func (c *Client) processMessages() {
 
 // processPayload updates the client data with the incoming message.
 func (c *Client) processPayload(payload []byte) {
+	// Log raw JSON payload
+	fmt.Printf("[MQTT] === RAW JSON PAYLOAD ===\n%s\n===========================\n", string(payload))
+
 	var received Message
 	if err := json.Unmarshal(payload, &received); err != nil {
 		log.Printf("Failed to unmarshal message: %v", err)
 		return
 	}
 
+	// Debug logging for all temperature fields
+	fmt.Printf("[MQTT] Parsed temperatures:\n")
+	fmt.Printf("  Print.chamber_temper: %.1f°C\n", received.Print.ChamberTemper)
+	fmt.Printf("  Print.bed_temper: %.1f°C\n", received.Print.BedTemper)
+	fmt.Printf("  Print.nozzle_temper: %.1f°C\n", received.Print.NozzleTemper)
+	fmt.Printf("  Print.device.ctc.info.temp (raw): %d\n", received.Print.Device.Ctc.Info.Temp)
+
+	// Extract chamber temp from device.ctc.info.temp with bitwise masking (ha-bambulab method)
 	if received.Print.Device.Ctc.Info.Temp != 0 {
 		chamberTemp := float64(received.Print.Device.Ctc.Info.Temp & 0xFFFF)
+		fmt.Printf("  Print.device.ctc.info.temp (masked): %.1f°C\n", chamberTemp)
 		// Override the chamber_temper field with the correct value
 		received.Print.ChamberTemper = chamberTemp
 	}
@@ -211,6 +223,7 @@ func (c *Client) processPayload(payload []byte) {
 // mergeMessages recursively merges the existing and new messages.
 func mergeMessages(existing, new *Message) {
 	// Use reflection to iterate through the fields of the "Print" struct.
+	// This will also merge the nested Device struct within Print
 	mergeStructs(&existing.Print, &new.Print)
 }
 

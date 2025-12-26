@@ -42,6 +42,7 @@ type Data struct {
 	AmsExists               bool             `json:"ams_exists"`                 // Whether an Ams is connected
 	BedTargetTemperature    float64          `json:"bed_target_temperature"`     // Target bed temperature (°C)
 	BedTemperature          float64          `json:"bed_temperature"`            // Current bed temperature (°C)
+	BedType                 string           `json:"bed_type"`                   // Bed plate type (e.g., "textured_plate", "cool_plate")
 	AuxiliaryFanSpeed       int              `json:"auxiliary_fan_speed"`        // Speed of the auxiliary fan (0-15)
 	ChamberFanSpeed         int              `json:"chamber_fan_speed"`          // Speed of the chamber fan (0-15)
 	PartFanSpeed            int              `json:"part_fan_speed"`             // Speed of the cooling fan (0-15)
