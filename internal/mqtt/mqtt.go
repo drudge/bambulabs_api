@@ -195,6 +195,12 @@ func (c *Client) processPayload(payload []byte) {
 		return
 	}
 
+	if received.Print.Device.Ctc.Info.Temp != 0 {
+		chamberTemp := float64(received.Print.Device.Ctc.Info.Temp & 0xFFFF)
+		// Override the chamber_temper field with the correct value
+		received.Print.ChamberTemper = chamberTemp
+	}
+
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 

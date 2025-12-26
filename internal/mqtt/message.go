@@ -168,5 +168,18 @@ type Message struct {
 			SpaghettiDetector        bool   `json:"spaghetti_detector"`
 		} `json:"xcam"`
 		XcamStatus string `json:"xcam_status"`
+		Device     struct {
+			Bed struct {
+				Temp int `json:"temp"`
+			} `json:"bed"`
+			Ctc struct {
+				Info struct {
+					Temp int `json:"temp"` // Chamber temperature (requires bitwise masking: temp & 0xFFFF)
+				} `json:"info"`
+			} `json:"ctc"`
+			Nozzle struct {
+				Temp int `json:"temp"`
+			} `json:"nozzle"`
+		} `json:"device"`
 	} `json:"print"`
 }
