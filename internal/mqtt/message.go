@@ -1,6 +1,6 @@
 package mqtt
 
-import "github.com/torbenconto/bambulabs_api/hms"
+import "github.com/drudge/bambulabs_api/hms"
 
 type Message struct {
 	Print struct {

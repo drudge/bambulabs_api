@@ -1,12 +1,12 @@
 package bambulabs_api
 
 import (
-	_light "github.com/torbenconto/bambulabs_api/light"
+	_light "github.com/drudge/bambulabs_api/light"
 	"image/color"
 	"reflect"
 
-	"github.com/torbenconto/bambulabs_api/hms"
-	"github.com/torbenconto/bambulabs_api/state"
+	"github.com/drudge/bambulabs_api/hms"
+	"github.com/drudge/bambulabs_api/state"
 )
 
 type Tray struct {

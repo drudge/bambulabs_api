@@ -3,21 +3,21 @@ package bambulabs_api
 import (
 	"fmt"
 
-	_fan "github.com/torbenconto/bambulabs_api/fan"
-	"github.com/torbenconto/bambulabs_api/internal/camera"
+	_fan "github.com/drudge/bambulabs_api/fan"
+	"github.com/drudge/bambulabs_api/internal/camera"
 
 	"image/color"
 	"os"
 	"strconv"
 	"time"
 
-	"github.com/torbenconto/bambulabs_api/hms"
-	"github.com/torbenconto/bambulabs_api/internal/ftp"
-	"github.com/torbenconto/bambulabs_api/internal/mqtt"
-	_light "github.com/torbenconto/bambulabs_api/light"
-	_printspeed "github.com/torbenconto/bambulabs_api/printspeed"
+	"github.com/drudge/bambulabs_api/hms"
+	"github.com/drudge/bambulabs_api/internal/ftp"
+	"github.com/drudge/bambulabs_api/internal/mqtt"
+	_light "github.com/drudge/bambulabs_api/light"
+	_printspeed "github.com/drudge/bambulabs_api/printspeed"
 
-	"github.com/torbenconto/bambulabs_api/state"
+	"github.com/drudge/bambulabs_api/state"
 )
 
 type Printer struct {

@@ -3,7 +3,7 @@ package hms_test
 import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
-	"github.com/torbenconto/bambulabs_api/hms"
+	"github.com/drudge/bambulabs_api/hms"
 	"testing"
 )
 
