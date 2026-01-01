@@ -1,4 +1,4 @@
-module github.com/torbenconto/bambulabs_api
+module github.com/drudge/bambulabs_api
 
 go 1.23.5
 
