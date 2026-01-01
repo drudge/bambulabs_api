@@ -23,6 +23,8 @@ type Tray struct {
 	TraySubBrands     string       `json:"tray_sub_brands"`    // Detailed filament type (manual input or Bambu filament)
 	TrayType          string       `json:"tray_type"`          // Filament type (e.g., PLA, ABS, PLA-S)
 	TrayWeight        int          `json:"tray_weight"`        // Spool weight (grams, in intervals of 250g)
+	Remain            int          `json:"remain"`             // Remaining filament percentage (0-100)
+	TrayUUID          string       `json:"tray_uuid"`          // Unique identifier for the tray
 }
 
 type Ams struct {
