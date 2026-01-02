@@ -237,15 +237,18 @@ func (p *Printer) Data() (Data, error) {
 			trays = append(trays, Tray{
 				ID:                unsafeParseInt(tray.ID),
 				BedTemperature:    unsafeParseFloat(tray.BedTemp),
+				BedTempType:       tray.BedTempType,
 				Colors:            colors,
 				DryingTemperature: unsafeParseFloat(tray.DryingTemp),
 				DryingTime:        unsafeParseInt(tray.DryingTime),
+				Remain:            tray.Remain,
 				NozzleTempMax:     unsafeParseFloat(tray.NozzleTempMax),
 				NozzleTempMin:     unsafeParseFloat(tray.NozzleTempMin),
 				TrayColor:         trayColor,
 				TrayDiameter:      unsafeParseFloat(tray.TrayDiameter),
 				TraySubBrands:     tray.TraySubBrands,
 				TrayType:          tray.TrayType,
+				TrayUUID:          tray.TrayUUID,
 				TrayWeight:        unsafeParseInt(tray.TrayWeight),
 			})
 		}
@@ -610,7 +613,8 @@ func (p *Printer) StopCameraStream() error {
 
 // mapPlateType maps the plate.base integer to a human-readable bed type string
 func mapPlateType(plateBase int) string {
-	fmt.Printf("[mapPlateType] Input plate.base value: %d\n", plateBase)
+	// Debug logging commented out - enable if needed
+	// fmt.Printf("[mapPlateType] Input plate.base value: %d\n", plateBase)
 	var result string
 	switch plateBase {
 	case 1:
@@ -626,7 +630,7 @@ func mapPlateType(plateBase int) string {
 	default:
 		result = ""
 	}
-	fmt.Printf("[mapPlateType] Returning: '%s'\n", result)
+	// fmt.Printf("[mapPlateType] Returning: '%s'\n", result)
 	return result
 }
 

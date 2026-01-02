@@ -169,7 +169,8 @@ func (c *Client) onConnectionLost(client paho.Client, err error) {
 func (c *Client) handleMessage(client paho.Client, msg paho.Message) {
 	select {
 	case c.messageChan <- msg.Payload():
-		log.Printf("Message received: %s", msg.Topic())
+		// Commented out - too noisy
+		// log.Printf("Message received: %s", msg.Topic())
 	default:
 		log.Println("Message dropped: channel full")
 	}
@@ -189,8 +190,8 @@ func (c *Client) processMessages() {
 
 // processPayload updates the client data with the incoming message.
 func (c *Client) processPayload(payload []byte) {
-	// Log raw JSON payload
-	fmt.Printf("[MQTT] === RAW JSON PAYLOAD ===\n%s\n===========================\n", string(payload))
+	// Commented out debug logging - enable via environment variable if needed
+	// fmt.Printf("[MQTT] === RAW JSON PAYLOAD ===\n%s\n===========================\n", string(payload))
 
 	var received Message
 	if err := json.Unmarshal(payload, &received); err != nil {
@@ -198,17 +199,17 @@ func (c *Client) processPayload(payload []byte) {
 		return
 	}
 
-	// Debug logging for all temperature fields
-	fmt.Printf("[MQTT] Parsed temperatures:\n")
-	fmt.Printf("  Print.chamber_temper: %.1f°C\n", received.Print.ChamberTemper)
-	fmt.Printf("  Print.bed_temper: %.1f°C\n", received.Print.BedTemper)
-	fmt.Printf("  Print.nozzle_temper: %.1f°C\n", received.Print.NozzleTemper)
-	fmt.Printf("  Print.device.ctc.info.temp (raw): %d\n", received.Print.Device.Ctc.Info.Temp)
+	// Debug logging for all temperature fields - commented out
+	// fmt.Printf("[MQTT] Parsed temperatures:\n")
+	// fmt.Printf("  Print.chamber_temper: %.1f°C\n", received.Print.ChamberTemper)
+	// fmt.Printf("  Print.bed_temper: %.1f°C\n", received.Print.BedTemper)
+	// fmt.Printf("  Print.nozzle_temper: %.1f°C\n", received.Print.NozzleTemper)
+	// fmt.Printf("  Print.device.ctc.info.temp (raw): %d\n", received.Print.Device.Ctc.Info.Temp)
 
 	// Extract chamber temp from device.ctc.info.temp with bitwise masking (ha-bambulab method)
 	if received.Print.Device.Ctc.Info.Temp != 0 {
 		chamberTemp := float64(received.Print.Device.Ctc.Info.Temp & 0xFFFF)
-		fmt.Printf("  Print.device.ctc.info.temp (masked): %.1f°C\n", chamberTemp)
+		// fmt.Printf("  Print.device.ctc.info.temp (masked): %.1f°C\n", chamberTemp)
 		// Override the chamber_temper field with the correct value
 		received.Print.ChamberTemper = chamberTemp
 	}
