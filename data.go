@@ -16,12 +16,14 @@ type Tray struct {
 	Colors            []color.RGBA `json:"colors"`             // Individual colors in the filament
 	DryingTemperature float64      `json:"drying_temperature"` // Temperature for drying the filament (°C)
 	DryingTime        int          `json:"drying_time"`        // Drying time (hours)
+	Remain            int          `json:"remain"`             // Remaining filament percentage (0-100)
 	NozzleTempMax     float64      `json:"nozzle_temp_max"`    // Maximum nozzle temperature (°C)
 	NozzleTempMin     float64      `json:"nozzle_temp_min"`    // Minimum nozzle temperature (°C)
 	TrayColor         color.RGBA   `json:"tray_color"`         // Overall filament color
 	TrayDiameter      float64      `json:"tray_diameter"`      // Diameter of the filament
 	TraySubBrands     string       `json:"tray_sub_brands"`    // Detailed filament type (manual input or Bambu filament)
 	TrayType          string       `json:"tray_type"`          // Filament type (e.g., PLA, ABS, PLA-S)
+	TrayUUID          string       `json:"tray_uuid"`          // Unique identifier for physical spool
 	TrayWeight        int          `json:"tray_weight"`        // Spool weight (grams, in intervals of 250g)
 	Remain            int          `json:"remain"`             // Remaining filament percentage (0-100)
 	TrayUUID          string       `json:"tray_uuid"`          // Unique identifier for the tray
@@ -32,7 +34,7 @@ type Ams struct {
 	HumidityPct int     `json:"humidity_pct"` // Actual humidity percentage 0-100
 	ID          int     `json:"id"`           // ID of the Ams object
 	Temperature float64 `json:"temperature"`  // Temperature inside the Ams (°C)
-	Trays       []Tray  `json:"trays"`        // List of trays in the Ams
+	Trays       []Tray  `json:"tray"`         // List of trays in the Ams - note: field is "tray" not "trays"
 }
 
 type LightReport struct {
