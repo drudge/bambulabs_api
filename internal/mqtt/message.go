@@ -51,6 +51,7 @@ type Message struct {
 		BedType                 string      `json:"bed_type"`
 		BigFan1Speed            string      `json:"big_fan1_speed"`
 		BigFan2Speed            string      `json:"big_fan2_speed"`
+		BigThumbnail            string      `json:"big_fan,omitempty"` // Base64 encoded thumbnail image or path
 		ChamberTemper           float64     `json:"chamber_temper"`
 		Command                 string      `json:"command"`
 		CoolingFanSpeed         string      `json:"cooling_fan_speed"`
