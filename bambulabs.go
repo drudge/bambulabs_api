@@ -169,6 +169,8 @@ func (p *Printer) Data() (Data, error) {
 		PrintSpeedMagnitude:     data.Print.SpdMag,
 		Sdcard:                  data.Print.Sdcard,
 		WifiSignal:              data.Print.WifiSignal,
+		LayerNum:                data.Print.LayerNum,
+		TotalLayerNum:           data.Print.TotalLayerNum,
 	}
 
 	for _, light := range data.Print.LightsReport {

@@ -78,6 +78,8 @@ type Data struct {
 	LightReport             []LightReport    `json:"lights_report"`              // Light report
 	VtTray                  Tray             `json:"vt_tray"`                    // Built-in tray for use without Ams
 	WifiSignal              string           `json:"wifi_signal"`                // Wi-Fi signal strength in dBm
+	LayerNum                int              `json:"layer_num"`                  // Current layer number
+	TotalLayerNum           int              `json:"total_layer_num"`            // Total number of layers in print
 }
 
 // IsEmpty checks if the Data struct is empty using reflection
