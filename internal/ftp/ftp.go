@@ -3,6 +3,7 @@ package ftp
 import (
 	"crypto/tls"
 	"fmt"
+	"io"
 	"github.com/secsy/goftp"
 	"os"
 )
@@ -71,6 +72,15 @@ func (c *Client) StoreFile(path string, file os.File) error {
 	}
 
 	return c.conn.Store(path, &file)
+}
+
+// Store stores data from an io.Reader into "path" on the server.
+func (c *Client) Store(path string, data io.Reader) error {
+	if c.conn == nil {
+		return fmt.Errorf("not connected")
+	}
+
+	return c.conn.Store(path, data)
 }
 
 // RetrieveFile retrieves file "path" on the server and returns it's contents as a buffer.

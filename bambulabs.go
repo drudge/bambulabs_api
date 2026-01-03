@@ -2,6 +2,7 @@ package bambulabs_api
 
 import (
 	"fmt"
+	"io"
 
 	_fan "github.com/drudge/bambulabs_api/fan"
 	"github.com/drudge/bambulabs_api/internal/camera"
@@ -582,6 +583,11 @@ func (p *Printer) SetPrintSpeed(speed _printspeed.PrintSpeed) error {
 // StoreFile calls the underlying ftp client to store a file on the printer.
 func (p *Printer) StoreFile(path string, file os.File) error {
 	return p.ftpClient.StoreFile(path, file)
+}
+
+// Store calls the underlying ftp client to store data from an io.Reader on the printer.
+func (p *Printer) Store(path string, data io.Reader) error {
+	return p.ftpClient.Store(path, data)
 }
 
 // ListDirectory calls the underlying ftp client to list the contents of a directory on the printer.
