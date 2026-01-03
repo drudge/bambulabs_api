@@ -55,9 +55,16 @@ type Data struct {
 	GcodeFilePreparePercent int              `json:"gcode_file_prepare_percent"` // Print preparation percentage
 	GcodeState              state.GcodeState `json:"gcode_state"`                // Current printer state
 	SubtaskName             string           `json:"subtask_name"`               // Human-readable name of current print job
+	SubtaskID               string           `json:"subtask_id"`                 // Unique identifier for this specific print instance
+	TaskID                  string           `json:"task_id"`                    // Cloud task identifier
+	ProjectID               string           `json:"project_id"`                 // MakerWorld project ID (for linking to model page)
+	ProfileID               string           `json:"profile_id"`                 // Print profile ID used
 	BigThumbnail            string           `json:"big_fan,omitempty"`        // Base64 encoded thumbnail or path (for cloud/streamed prints)
 	PreparationStage        PreparationStage `json:"preparation_stage"`          // Current preparation stage (stg_cur)
 	PreparationProgress     int              `json:"preparation_progress"`       // Preparation stage progress percentage (stg_pct, 0-100)
+	FilamentWeight          float64          `json:"filament_weight"`            // Estimated filament usage in grams
+	FilamentCost            float64          `json:"filament_cost"`              // Estimated print cost
+	AmsMapping              []int            `json:"ams_mapping"`                // Maps virtual filament slots to physical AMS slots
 	HMS                     []hms.Error      `json:"hms"`                        // List of errors (TODO: not fully implemented)
 	PrintPercentDone        int              `json:"print_percent_done"`         // Current print completion percentage
 	PrintErrorCode          string           `json:"print_error_code"`           // Current print error code

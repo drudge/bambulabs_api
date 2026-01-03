@@ -45,6 +45,7 @@ type Message struct {
 		} `json:"ams"`
 		AmsRfidStatus           int         `json:"ams_rfid_status"`
 		AmsStatus               int         `json:"ams_status"`
+		AmsMapping              []int       `json:"ams_mapping"` // Maps virtual filament slots to physical AMS slots
 		AuxPartFan              bool        `json:"aux_part_fan"`
 		BedTargetTemper         float64     `json:"bed_target_temper"`
 		BedTemper               float64     `json:"bed_temper"`
@@ -110,8 +111,10 @@ type Message struct {
 		StgPct           int    `json:"stg_pct"` // Stage percentage (0-100)
 		SubtaskID        string `json:"subtask_id"`
 		SubtaskName      string `json:"subtask_name"`
-		TaskID           string `json:"task_id"`
-		TotalLayerNum    int    `json:"total_layer_num"`
+		TaskID           string  `json:"task_id"`
+		TotalLayerNum    int     `json:"total_layer_num"`
+		TotalWeight      float64 `json:"total_weight"`     // Estimated filament weight in grams
+		FilamentCost     float64 `json:"filament_cost"`    // Estimated cost
 		UpgradeState     struct {
 			AhbNewVersionNumber string `json:"ahb_new_version_number"`
 			AmsNewVersionNumber string `json:"ams_new_version_number"`
