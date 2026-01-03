@@ -147,6 +147,7 @@ func (p *Printer) Data() (Data, error) {
 		GcodeFilePreparePercent: unsafeParseInt(data.Print.GcodeFilePreparePercent),
 		GcodeState:              state.GcodeState(data.Print.GcodeState),
 		SubtaskName:             data.Print.SubtaskName,
+		BigThumbnail:            data.Print.BigThumbnail,
 		PrintPercentDone:        data.Print.McPercent,
 		PrintErrorCode:          data.Print.McPrintErrorCode,
 		RemainingPrintTime:      data.Print.McRemainingTime,
