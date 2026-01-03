@@ -590,6 +590,11 @@ func (p *Printer) Store(path string, data io.Reader) error {
 	return p.ftpClient.Store(path, data)
 }
 
+// Retrieve calls the underlying ftp client to retrieve a file from the printer as a byte slice.
+func (p *Printer) Retrieve(path string) ([]byte, error) {
+	return p.ftpClient.Retrieve(path)
+}
+
 // ListDirectory calls the underlying ftp client to list the contents of a directory on the printer.
 func (p *Printer) ListDirectory(path string) ([]os.FileInfo, error) {
 	return p.ftpClient.ListDir(path)

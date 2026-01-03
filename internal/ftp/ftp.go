@@ -1,6 +1,7 @@
 package ftp
 
 import (
+	"bytes"
 	"crypto/tls"
 	"fmt"
 	"io"
@@ -81,6 +82,20 @@ func (c *Client) Store(path string, data io.Reader) error {
 	}
 
 	return c.conn.Store(path, data)
+}
+
+// Retrieve retrieves file "path" on the server and returns it's contents as a byte slice.
+func (c *Client) Retrieve(path string) ([]byte, error) {
+	if c.conn == nil {
+		return nil, fmt.Errorf("not connected")
+	}
+
+	var buf bytes.Buffer
+	err := c.conn.Retrieve(path, &buf)
+	if err != nil {
+		return nil, err
+	}
+	return buf.Bytes(), nil
 }
 
 // RetrieveFile retrieves file "path" on the server and returns it's contents as a buffer.
