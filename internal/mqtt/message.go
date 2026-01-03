@@ -107,6 +107,7 @@ type Message struct {
 		SpdMag           int    `json:"spd_mag"`
 		Stg              []any  `json:"stg"`
 		StgCur           int    `json:"stg_cur"`
+		StgPct           int    `json:"stg_pct"` // Stage percentage (0-100)
 		SubtaskID        string `json:"subtask_id"`
 		SubtaskName      string `json:"subtask_name"`
 		TaskID           string `json:"task_id"`

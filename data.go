@@ -56,6 +56,8 @@ type Data struct {
 	GcodeState              state.GcodeState `json:"gcode_state"`                // Current printer state
 	SubtaskName             string           `json:"subtask_name"`               // Human-readable name of current print job
 	BigThumbnail            string           `json:"big_fan,omitempty"`        // Base64 encoded thumbnail or path (for cloud/streamed prints)
+	PreparationStage        int              `json:"preparation_stage"`          // Current preparation stage (stg_cur): 0=idle, 1=leveling, 2=heating bed, etc.
+	PreparationProgress     int              `json:"preparation_progress"`       // Preparation stage progress percentage (stg_pct, 0-100)
 	HMS                     []hms.Error      `json:"hms"`                        // List of errors (TODO: not fully implemented)
 	PrintPercentDone        int              `json:"print_percent_done"`         // Current print completion percentage
 	PrintErrorCode          string           `json:"print_error_code"`           // Current print error code

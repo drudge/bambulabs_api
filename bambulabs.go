@@ -148,6 +148,8 @@ func (p *Printer) Data() (Data, error) {
 		GcodeState:              state.GcodeState(data.Print.GcodeState),
 		SubtaskName:             data.Print.SubtaskName,
 		BigThumbnail:            data.Print.BigThumbnail,
+		PreparationStage:        data.Print.StgCur,
+		PreparationProgress:     data.Print.StgPct,
 		PrintPercentDone:        data.Print.McPercent,
 		PrintErrorCode:          data.Print.McPrintErrorCode,
 		RemainingPrintTime:      data.Print.McRemainingTime,
