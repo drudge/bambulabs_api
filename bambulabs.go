@@ -356,12 +356,6 @@ func (p *Printer) LightFlashing(light _light.Light, onTime, offTime, loopTimes, 
 	return p.setLightFlashing(light, _light.Flashing, onTime, offTime, loopTimes, intervalTime)
 }
 
-// RequestUpdate requests a full state update from the printer by sending a pushall command.
-func (p *Printer) RequestUpdate() error {
-	command := mqtt.NewCommand(mqtt.Pushing).AddCommandField("pushall")
-	return p.mqttClient.Publish(command)
-}
-
 // StopPrint fully stops the current print job.
 // Function works independently but problems exist with the underlying.
 func (p *Printer) StopPrint() error {
